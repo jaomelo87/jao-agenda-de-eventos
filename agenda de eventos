@@ -1,0 +1,49 @@
+from evento import Evento
+
+class AgendaEventos:
+    def __init__(self):
+        self.eventos = []
+
+    def adicionar_evento(self, evento):
+        self.eventos.append(evento)
+
+    def editar_evento(self, indice, novo_evento):
+        self.eventos[indice] = novo_evento
+
+    def remover_evento(self, indice):
+        self.eventos.pop(indice)
+
+    def listar_eventos(self):
+        for evento in self.eventos:
+            print(evento)
+
+from agendaeventos import AgendaEventos
+from evento import Evento
+
+agenda = AgendaEventos()
+
+evento1 = Evento("Título 1", "01/01/2023", "10:00", "Local 1")
+evento2 = Evento("Título 2", "02/01/2023", "14:00", "Local 2")
+agenda.adicionar_evento(evento1)
+agenda.adicionar_evento(evento2)
+
+agenda.listar_eventos()
+
+novo_evento = Evento("Novo Título", "01/01/2023", "10:00", "Local 1")
+agenda.editar_evento(0, novo_evento)
+
+agenda.listar_eventos()
+
+agenda.remover_evento(1)
+
+agenda.listar_eventos()
+
+class Evento:
+    def __init__(self, titulo, data, hora, local):
+        self.titulo = titulo
+        self.data = data
+        self.hora = hora
+        self.local = local
+
+    def __str__(self):
+        return f"Título: {self.titulo}\nData: {self.data}\nHora: {self.hora}\nLocal: {self.local}\n"
